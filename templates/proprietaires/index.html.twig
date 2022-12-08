@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des propriétaires{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <table class="container">
+        <h1>Les Propriétaires</h1>
+        <table class="table table-striped">
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            {% for p in proprietaires %}
+                <tr>
+                    <td>{{ p.Nom }}</td>
+                    <td>{{ p.Prenom }}</td>
+                    <td>
+                        <a href="{{ path("app_proprietaire_modifier", {"id": p.id}) }}" class="btn btn-primary">modifier</a>
+                    </td>
+                    <td>
+                        <a href="{{ path("app_proprietaire_supprimer", {"id": p.id}) }}" class="btn btn-danger">supprimer</a>
+                    </td>
+                    <td>
+                        <a href="{{ path("app_proprietaire_chatons", {"id": p.id}) }}" class="btn btn-warning">chatons</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <a href="{{ path("app_proprietaire_ajouter") }}" class="mt-5 btn btn-primary">Ajouter un propriétaire</a>
+    </div>
+{% endblock %}
